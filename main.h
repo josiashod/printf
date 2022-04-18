@@ -39,7 +39,8 @@ int _printf(const char *format, ...);
 unsigned int convert_c(va_list args, buffer_t *output);
 unsigned int convert_s(va_list args, buffer_t *output);
 unsigned int convert_d(va_list args, buffer_t *output);
-unsigned int c_percent(va_list args, buffer_t *);
+unsigned int c_percent(va_list args, buffer_t *output);
+unsigned int convert_b(va_list args, buffer_t *output);
 
 /* HELPERS FUNCTION */
 buffer_t *init_buffer(void);
