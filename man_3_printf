@@ -17,6 +17,10 @@ To use _printf you have possibility to use the following key characters preceede
 %d: To print integers of max and min size of an int type
 .RS 0
 %i: To print integers of max and min size of an int type
+.RS 0
+%u: To print unsigned integers of max and min size of an int type
+.RS 0
+%o: To print integers in base8 of max and min size of an int type
 .SH RETURN VALUES
 The _printf() function returns an integer representing the number of symbols
 printed not counting
