@@ -12,12 +12,11 @@ unsigned int convert_base(long int number, int base,
 	char *representation, buffer_t *output)
 {
 	unsigned int len = 0;
-	long int copy_number = number;
 
 	if (number != 0)
 	{
-		len += convert_base(copy_number / base, base, representation, output);
-		len += _memcpy(output, (representation + (copy_number % base)), 1);
+		len += convert_base(number / base, base, representation, output);
+		len += _memcpy(output, (representation + (number % base)), 1);
 	}
 	return (len);
 }
