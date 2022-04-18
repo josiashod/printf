@@ -1,6 +1,28 @@
 #include "main.h"
 
 /**
+ * convert_base - convert a number to a specified base
+ * @number: number to convert
+ * @base: the destination base
+ * @representation: the destinated base representation
+ * @output: the buffer
+ * Return: the number of bytes stored in buffer
+ */
+unsigned int convert_base(long int number, int base,
+	char *representation, buffer_t *output)
+{
+	unsigned int len = 0;
+	long int copy_number = number;
+
+	if (number != 0)
+	{
+		len += convert_base(copy_number / base, base, representation, output);
+		len += _memcpy(output, (representation + (copy_number % base)), 1);
+	}
+	return (len);
+}
+
+/**
  * convert_c - convert argument to a char
  * @args: list of arguments
  * @output: the result output
@@ -71,15 +93,16 @@ unsigned int c_percent(va_list args __attribute__((unused)), buffer_t *output)
  */
 unsigned int convert_d(va_list args, buffer_t *output)
 {
-	char *str;
+	int d;
 	unsigned int len = 0;
-	int i = 0;
+	char minus = '-';
 
-	str = va_arg(args, char *);
-	while (str[i])
+	d = va_arg(args, int);
+	if (d < 0)
 	{
-		len += _memcpy(output, str + i, 1);
-		i++;
+		len += _memcpy(output, &minus, 1);
+		d = -d;
 	}
+	len += convert_base(d, 10, "0123456789", output);
 	return (len);
 }
