@@ -24,6 +24,7 @@ unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n)
 
 /**
  * free_buffer - Frees a buffer
+ * @buffer: the buffer
  */
 void free_buffer(buffer_t *buffer)
 {

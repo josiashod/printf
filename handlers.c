@@ -11,7 +11,9 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *)
 	format_t formater[] = {
 		{'c', convert_c},
 		{'s', convert_s},
-		{'%', convert_percent},
+		{'d', convert_d},
+		{'i', convert_d},
+		{'%', c_percent},
 		{0, NULL}
 	};
 	int i = 0;

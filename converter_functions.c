@@ -25,8 +25,8 @@ unsigned int convert_c(va_list args, buffer_t *output)
  *
  * @args: list of arguments
  * @output: the result output
- *                                      
- * Return: the number of bytes stored in buffer  
+ *
+ * Return: the number of bytes stored in buffer
  */
 unsigned int convert_s(va_list args, buffer_t *output)
 {
@@ -44,13 +44,13 @@ unsigned int convert_s(va_list args, buffer_t *output)
 }
 
 /**
- * convert_percent - convert percent argument
+ * c_percent - convert percent argument
  * @args: list of arguments
  * @output: the result output
  *
  * Return: the number of bytes stored in buffer
  */
-unsigned int convert_percent(va_list args __attribute__((unused)), buffer_t *output)
+unsigned int c_percent(va_list args __attribute__((unused)), buffer_t *output)
 {
 	char c = '%';
 	unsigned int len = 0;
@@ -66,8 +66,8 @@ unsigned int convert_percent(va_list args __attribute__((unused)), buffer_t *out
  *
  * @args: list of arguments
  * @output: the result output
- *                                      
- * Return: the number of bytes stored in buffer  
+ *
+ * Return: the number of bytes stored in buffer
  */
 unsigned int convert_d(va_list args, buffer_t *output)
 {

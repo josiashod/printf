@@ -10,9 +10,9 @@
 
 /**
  * struct buffer - A new buffer type
- * @start - pointer to the head of the pointer
- * @buffer - pointer to an array of char
- * @len - size of the buffer
+ * @start: - pointer to the head of the pointer
+ * @buffer: - pointer to an array of char
+ * @len: - size of the buffer
  */
 typedef struct buffer
 {
@@ -35,9 +35,10 @@ typedef struct format
 int _printf(const char *format, ...);
 
 /* CONVERTER FUNCTIONS */
-unsigned int convert_c(va_list args, buffer_t *);
-unsigned int convert_s(va_list args, buffer_t *);
-unsigned int convert_percent(va_list args, buffer_t *);
+unsigned int convert_c(va_list args, buffer_t *output);
+unsigned int convert_s(va_list args, buffer_t *output);
+unsigned int convert_d(va_list args, buffer_t *output);
+unsigned int c_percent(va_list args, buffer_t *);
 
 /* HELPERS FUNCTION */
 buffer_t *init_buffer(void);
