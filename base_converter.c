@@ -11,11 +11,12 @@
  */
 unsigned int convert_b(va_list args, buffer_t *output)
 {
-	int d;
-	unsigned int len = 0;
+	unsigned int d, len = 0;
 
 	d = va_arg(args, unsigned int);
+
 	len += convert_base(d, 2, "01", output);
+
 	return (len);
 }
 
@@ -49,11 +50,12 @@ unsigned int convert_o(va_list args, buffer_t *output)
  */
 unsigned int convert_hex(va_list args, buffer_t *output)
 {
-	int d;
-	unsigned int len = 0;
+	unsigned int d, len = 0;
 
 	d = va_arg(args, unsigned int);
+
 	len += convert_base(d, 16, "0123456789abcdef", output);
+
 	return (len);
 }
 
@@ -68,10 +70,11 @@ unsigned int convert_hex(va_list args, buffer_t *output)
  */
 unsigned int convert_HEX(va_list args, buffer_t *output)
 {
-	int d;
-	unsigned int len = 0;
+	unsigned int d, len = 0;
 
 	d = va_arg(args, unsigned int);
+
 	len += convert_base(d, 16, "0123456789ABCDEF", output);
+
 	return (len);
 }
