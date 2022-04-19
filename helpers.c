@@ -42,6 +42,7 @@ unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n)
 		{
 			write(1, dest->start, dest->len);
 			dest->buffer = dest->start;
+			dest->len = 0;
 		}
 		else
 			(dest->buffer)++;
