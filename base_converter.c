@@ -32,16 +32,8 @@ unsigned int convert_o(va_list args, buffer_t *output)
 {
 	int d;
 	unsigned int len = 0;
-	/* char minus = '-'; */
 
-	d = va_arg(args, int);
-	/**
-    * if (d < 0)
-	* {
-	*	len += _memcpy(output, &minus, 1);
-	*	d = -d;
-	* }
-    */
+	d = va_arg(args, unsigned int);
 	len += convert_base(d, 8, "01234567", output);
 	return (len);
 }

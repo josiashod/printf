@@ -40,7 +40,6 @@ int _printf(const char *format, ...)
 			{
 				len += convert(args, output);
 				format += 2;
-				continue;
 			}
 		}
 		len += _memcpy(output, (format + i), 1);
