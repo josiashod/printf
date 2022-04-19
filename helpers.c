@@ -36,8 +36,16 @@ unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n)
 	for (; i < n; i++)
 	{
 		*(dest->buffer) = src[i];
-		(dest->buffer)++;
 		dest->len++;
+
+		if (dest->len == BUFFER_SIZE)
+		{
+			write(1, dest->start, dest->len);
+			dest->buffer = dest->start;
+		}
+		else
+			(dest->buffer)++;
+
 	}
 
 	return (n);
