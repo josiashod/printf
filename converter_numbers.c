@@ -38,7 +38,7 @@ unsigned int convert_u(va_list args, buffer_t *output)
 {
 	int d;
 	unsigned int len = 0;
-	
+
 	d = va_arg(args, unsigned int);
 	len += convert_base(d, 10, "0123456789", output);
 	return (len);
