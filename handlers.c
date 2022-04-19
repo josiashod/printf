@@ -13,9 +13,11 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *)
 		{'s', convert_s},
 		{'d', convert_d},
 		{'i', convert_d},
-		{'u', convert_d},
+		{'u', convert_u},
 		{'b', convert_b},
 		{'o', convert_o},
+		{'x', convert_hex},
+		{'X', convert_HEX},
 		{'%', c_percent},
 		{0, NULL}
 	};

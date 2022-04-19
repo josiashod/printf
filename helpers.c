@@ -1,6 +1,27 @@
 #include "main.h"
 
 /**
+ * convert_base - convert a number to a specified base
+ * @number: number to convert
+ * @base: the destination base
+ * @representation: the destinated base representation
+ * @output: the buffer
+ * Return: the number of bytes stored in buffer
+ */
+unsigned int convert_base(unsigned int number, int base,
+	char *representation, buffer_t *output)
+{
+	unsigned int len = 0;
+
+	if (number != 0)
+	{
+		len += convert_base(number / base, base, representation, output);
+		len += _memcpy(output, (representation + (number % base)), 1);
+	}
+	return (len);
+}
+
+/**
  * _memcpy - copies memory area.
  * @dest: destination
  * @src: source
@@ -56,26 +77,4 @@ buffer_t *init_buffer(void)
 	output->len = 0;
 
 	return (output);
-}
-
-/**
- * convert_base - convert a number to a specified base
- * @number: number to convert
- * @base: the destination base
- * @representation: the destinated base representation
- * @output: the buffer
- * Return: the number of bytes stored in buffer
- */
-unsigned int convert_base(long int number, int base,
-	char *representation, buffer_t *output)
-{
-	unsigned int len = 0;
-	long int copy_number = number;
-
-	if (number != 0)
-	{
-		len += convert_base(copy_number / base, base, representation, output);
-		len += _memcpy(output, (representation + (copy_number % base)), 1);
-	}
-	return (len);
 }

@@ -42,12 +42,15 @@ unsigned int convert_d(va_list args, buffer_t *output);
 unsigned int convert_o(va_list args, buffer_t *output);
 unsigned int c_percent(va_list args, buffer_t *output);
 unsigned int convert_b(va_list args, buffer_t *output);
+unsigned int convert_u(va_list args, buffer_t *output);
+unsigned int convert_hex(va_list args, buffer_t *output);
+unsigned int convert_HEX(va_list args, buffer_t *output);
 
 /* HELPERS FUNCTION */
 buffer_t *init_buffer(void);
 void free_buffer(buffer_t *buffer);
 unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n);
-unsigned int convert_base(long int number, int base, char *representation,
+unsigned int convert_base(unsigned int number, int base, char *representation,
 buffer_t *output);
 
 /* HANDLERS */
