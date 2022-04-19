@@ -41,9 +41,12 @@ unsigned int convert_d(va_list args, buffer_t *output);
 unsigned int convert_o(va_list args, buffer_t *output);
 unsigned int c_percent(va_list args __attribute__((unused)), buffer_t *output);
 unsigned int convert_b(va_list args, buffer_t *output);
+unsigned int convert_p(va_list args, buffer_t *output);
 unsigned int convert_u(va_list args, buffer_t *output);
 unsigned int convert_hex(va_list args, buffer_t *output);
 unsigned int convert_HEX(va_list args, buffer_t *output);
+unsigned int convert_r(va_list args, buffer_t *output);
+unsigned int convert_R(va_list args, buffer_t *output);
 
 /* HELPERS FUNCTION */
 buffer_t *init_buffer(void);
