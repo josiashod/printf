@@ -30,14 +30,14 @@ unsigned int convert_c(va_list args, buffer_t *output)
  */
 unsigned int convert_s(va_list args, buffer_t *output)
 {
-	char *str;
+	char *str, *null = "(null)";
 	unsigned int len = 0;
 	int i = 0;
 
 	str = va_arg(args, char *);
 
 	if (str == NULL)
-		str = "(null)";
+		return (_memcpy(output, null, 6));
 
 	while (str[i])
 	{
