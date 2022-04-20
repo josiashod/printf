@@ -1,92 +1,52 @@
 #include "main.h"
 
-/**
- * convert_base - convert a number to a specified base
- * @number: number to convert
- * @base: the destination base
- * @representation: the destinated base representation
- * @output: the buffer
- * Return: the number of bytes stored in buffer
- */
-unsigned int convert_base(unsigned int number, int base,
-	char *representation, buffer_t *output)
-{
-	unsigned int len = 0;
-
-	if (number > 0)
-	{
-		len += convert_base(number / base, base, representation, output);
-		len += _memcpy(output, (representation + (number % base)), 1);
-	}
-	return (len);
-}
 
 /**
- * convert_ubase - convert an unsigned long number to a specified base
- * @number: number to convert
- * @base: the destination base
- * @representation: the destinated base representation
- * @output: the buffer
- * Return: the number of bytes stored in buffer
- */
-unsigned int convert_ubase(unsigned long int number, unsigned int base,
-	char *representation, buffer_t *output)
-{
-	unsigned int len = 0;
-
-	if (number > 0)
-	{
-		len += convert_ubase(number / base, base, representation, output);
-		len += _memcpy(output, (representation + (number % base)), 1);
-	}
-	return (len);
-}
-
-/**
- * _memcpy - copies memory area.
- * @dest: destination
- * @src: source
- * @n: number of bytes.
+ * _memcpy - Copies n bytes from memory area src to
+ *           the buffer contained in a buffer_t struct.
+ * @output: A buffer_t struct.
+ * @src: A pointer to the memory area to copy.
+ * @n: The number of bytes to be copied.
  *
- * Return: a pointer to dest.
+ * Return: The number of bytes copied.
  */
-unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n)
+unsigned int _memcpy(buffer_t *output, const char *src, unsigned int n)
 {
-	unsigned int i = 0;
+	unsigned int index;
 
-	for (; i < n; i++)
+	for (index = 0; index < n; index++)
 	{
-		*(dest->buffer) = src[i];
-		dest->len++;
+		*(output->buffer) = *(src + index);
+		(output->len)++;
 
-		if (dest->len == BUFFER_SIZE)
+		if (output->len == 1024)
 		{
-			write(1, dest->start, dest->len);
-			dest->buffer = dest->start;
-			dest->len = 0;
+			write(1, output->start, output->len);
+			output->buffer = output->start;
+			output->len = 0;
 		}
-		else
-			(dest->buffer)++;
 
+		else
+			(output->buffer)++;
 	}
 
 	return (n);
 }
 
 /**
- * free_buffer - Frees a buffer
- * @buffer: the buffer
+ * free_buffer - Frees a buffer_t struct.
+ * @output: The buffer_t struct to be freed.
  */
-void free_buffer(buffer_t *buffer)
+void free_buffer(buffer_t *output)
 {
-	free(buffer->start);
-	free(buffer);
+	free(output->start);
+	free(output);
 }
 
 /**
- * init_buffer - Init a variable of type buffer_t
+ * init_buffer - Initializes a variable of struct type buffer_t.
  *
- * Return: pointer to the created buffer
+ * Return: A pointer to the initialized buffer_t.
  */
 buffer_t *init_buffer(void)
 {
@@ -96,7 +56,7 @@ buffer_t *init_buffer(void)
 	if (output == NULL)
 		return (NULL);
 
-	output->buffer = malloc(sizeof(char) * BUFFER_SIZE);
+	output->buffer = malloc(sizeof(char) * 1024);
 	if (output->buffer == NULL)
 	{
 		free(output);
