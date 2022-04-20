@@ -42,6 +42,11 @@ int _printf(const char *format, ...)
 				format += 2;
 				continue;
 			}
+			else
+			{
+				len--;
+				break;
+			}
 		}
 		len += _memcpy(output, (format + i), 1);
 		i++;
