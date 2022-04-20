@@ -36,7 +36,7 @@ unsigned int convert_s(va_list args, buffer_t *output)
 
 	str = va_arg(args, char *);
 
-	if (str == NULL)
+	if (str == NULL || !str)
 		return (_memcpy(output, null, 6));
 
 	while (str[i])

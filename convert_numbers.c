@@ -16,6 +16,12 @@ unsigned int convert_d(va_list args, buffer_t *output)
 	char minus = '-';
 
 	d = va_arg(args, int);
+	if (d == 0)
+	{
+		len += _memcpy(output, "0", 1);
+		return (len);
+	}
+
 	if (d < 0)
 	{
 		len += _memcpy(output, &minus, 1);
