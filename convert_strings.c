@@ -48,13 +48,14 @@ unsigned int convert_s(va_list args, buffer_t *output)
 }
 
 /**
- * c_percent - convert percent argument
+ * convert_percent - convert percent argument
  * @args: list of arguments
  * @output: the result output
  *
  * Return: the number of bytes stored in buffer
  */
-unsigned int c_percent(va_list args __attribute__((unused)), buffer_t *output)
+unsigned int convert_percent(va_list args __attribute__((unused)),
+buffer_t *output)
 {
 	char c = '%';
 	unsigned int len = 0;
@@ -107,8 +108,12 @@ unsigned int convert_S(va_list args, buffer_t *output)
 
 	while (str[i])
 	{
-		if ((str[i] < 0 && str[i] < 32 )|| str[i] >= 127)
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		{
+			_memcpy(output, "\\x0", 3);
 			convert_base(str[i], 16, "0123456789ABCDEF", output);
+			i++;
+		}
 		len += _memcpy(output, str + i, 1);
 		i++;
 	}

@@ -22,7 +22,7 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *)
 		/* {'R', convert_R}, */
 		{'x', convert_hex},
 		{'X', convert_HEX},
-		{'%', c_percent},
+		{'%', convert_percent},
 		{0, NULL}
 	};
 	int i = 0;
