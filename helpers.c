@@ -13,12 +13,6 @@ unsigned int convert_base(unsigned int number, int base,
 {
 	unsigned int len = 0;
 
-	if (number == 0)
-	{
-		len += _memcpy(output, "0", 1);
-		return (len);
-	}
-
 	if (number > 0)
 	{
 		len += convert_base(number / base, base, representation, output);

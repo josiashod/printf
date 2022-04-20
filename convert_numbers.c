@@ -17,6 +17,12 @@ unsigned int convert_d(va_list args, buffer_t *output)
 
 	d = va_arg(args, int);
 
+	if (d == 0)
+	{
+		len += _memcpy(output, "0", 1);
+		return (len);
+	}
+
 	if (d < 0)
 	{
 		len += _memcpy(output, &minus, 1);
@@ -41,6 +47,13 @@ unsigned int convert_u(va_list args, buffer_t *output)
 	unsigned int len = 0;
 
 	d = va_arg(args, unsigned int);
+
+	if (d == 0)
+	{
+		len += _memcpy(output, "0", 1);
+		return (len);
+	}
+
 	len += convert_base(d, 10, "0123456789", output);
 	return (len);
 }
