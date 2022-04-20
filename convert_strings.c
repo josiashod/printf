@@ -74,11 +74,11 @@ unsigned int c_percent(va_list args __attribute__((unused)), buffer_t *output)
 unsigned int convert_p(va_list args, buffer_t *output)
 {
 	unsigned long int len = 0, addr;
-	char *null = "(null)";
+	char *null = "(nil)";
 
 	addr = va_arg(args, unsigned long int);
 
-	if (addr == '\0' || addr == NULL)
+	if (addr == '\0')
 		return (_memcpy(output, null, 6));
 
 	len += _memcpy(output, "0x", 2);
