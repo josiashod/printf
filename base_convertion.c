@@ -2,8 +2,7 @@
 
 
 /**
- * convert_signed_in_base - Converts a signed long to an inputted base and stores
- *                 the result to a buffer contained in a struct.
+ * convert_signed_in_base - Converts a signed long
  * @output: A buffer_t struct containing a character array.
  * @num: A signed long to be converted.
  * @base: A pointer to a string containing the base to convert to.
@@ -58,8 +57,8 @@ unsigned int convert_signed_in_base(buffer_t *output, long int num, char *base,
  *
  * Return: The number of bytes stored to the buffer.
  */
-unsigned int convert_unsigned_in_base(buffer_t *output, unsigned long int num, char *base,
-		unsigned char flags, int wid, int prec)
+unsigned int convert_unsigned_in_base(buffer_t *output, unsigned long int num,
+	char *base, unsigned char flags, int wid, int prec)
 {
 	unsigned int size, ret = 1;
 	char digit, pad = '0', *lead = "0x";
