@@ -2,6 +2,7 @@
 #define MAIN_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <stddef.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -45,6 +46,7 @@ unsigned int convert_p(va_list args, buffer_t *output);
 unsigned int convert_u(va_list args, buffer_t *output);
 unsigned int convert_hex(va_list args, buffer_t *output);
 unsigned int convert_HEX(va_list args, buffer_t *output);
+unsigned int convert_S(va_list args, buffer_t *output);
 /* unsigned int convert_r(va_list args, buffer_t *output); */
 /* unsigned int convert_R(va_list args, buffer_t *output); */
 
@@ -54,6 +56,8 @@ void free_buffer(buffer_t *buffer);
 unsigned int _memcpy(buffer_t *dest, const char *src, unsigned int n);
 unsigned int convert_base(unsigned int number, int base, char *representation,
 buffer_t *output);
+unsigned int convert_ubase(unsigned long int number, unsigned int base,
+char *representation, buffer_t *output);
 
 /* HANDLERS */
 unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *);

@@ -65,7 +65,7 @@ unsigned int convert_hex(va_list args, buffer_t *output)
 {
 	unsigned int d, len = 0;
 
-	d = va_arg(args, unsigned int);
+	d = va_arg(args, unsigned long int);
 
 	if (d == 0)
 	{
@@ -73,7 +73,7 @@ unsigned int convert_hex(va_list args, buffer_t *output)
 		return (len);
 	}
 
-	len += convert_base(d, 16, "0123456789abcdef", output);
+	len += convert_ubase(d, 16, "0123456789abcdef", output);
 
 	return (len);
 }
@@ -91,7 +91,7 @@ unsigned int convert_HEX(va_list args, buffer_t *output)
 {
 	unsigned int d, len = 0;
 
-	d = va_arg(args, unsigned int);
+	d = va_arg(args, unsigned long int);
 
 	if (d == 0)
 	{
@@ -99,7 +99,7 @@ unsigned int convert_HEX(va_list args, buffer_t *output)
 		return (len);
 	}
 
-	len += convert_base(d, 16, "0123456789ABCDEF", output);
+	len += convert_ubase(d, 16, "0123456789ABCDEF", output);
 
 	return (len);
 }

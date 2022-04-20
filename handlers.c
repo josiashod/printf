@@ -17,6 +17,7 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *)
 		{'b', convert_b},
 		{'o', convert_o},
 		{'p', convert_p},
+		{'S', convert_S},
 		/* {'r', convert_r}, */
 		/* {'R', convert_R}, */
 		{'x', convert_hex},

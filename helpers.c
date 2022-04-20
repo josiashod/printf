@@ -22,6 +22,27 @@ unsigned int convert_base(unsigned int number, int base,
 }
 
 /**
+ * convert_ubase - convert an unsigned long number to a specified base
+ * @number: number to convert
+ * @base: the destination base
+ * @representation: the destinated base representation
+ * @output: the buffer
+ * Return: the number of bytes stored in buffer
+ */
+unsigned int convert_ubase(unsigned long int number, unsigned int base,
+	char *representation, buffer_t *output)
+{
+	unsigned int len = 0;
+
+	if (number > 0)
+	{
+		len += convert_ubase(number / base, base, representation, output);
+		len += _memcpy(output, (representation + (number % base)), 1);
+	}
+	return (len);
+}
+
+/**
  * _memcpy - copies memory area.
  * @dest: destination
  * @src: source
