@@ -78,7 +78,7 @@ unsigned int convert_p(va_list args, buffer_t *output)
 
 	addr = va_arg(args, unsigned long int);
 
-	if (addr == '\0')
+	if (addr == '\0' || addr == NULL)
 		return (_memcpy(output, null, 6));
 
 	len += _memcpy(output, "0x", 2);
