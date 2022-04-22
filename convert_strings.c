@@ -79,7 +79,7 @@ unsigned int convert_p(va_list args, buffer_t *output)
 	addr = va_arg(args, unsigned long int);
 
 	if (addr == '\0')
-		return (_memcpy(output, null, 6));
+		return (_memcpy(output, null, 5));
 
 	len += _memcpy(output, "0x", 2);
 	len += convert_ubase(addr, 16, "0123456789abcdef", output);
