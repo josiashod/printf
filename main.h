@@ -47,7 +47,7 @@ unsigned int convert_u(va_list args, buffer_t *output);
 unsigned int convert_hex(va_list args, buffer_t *output);
 unsigned int convert_HEX(va_list args, buffer_t *output);
 unsigned int convert_S(va_list args, buffer_t *output);
-/* unsigned int convert_r(va_list args, buffer_t *output); */
+unsigned int convert_r(va_list args, buffer_t *output);
 /* unsigned int convert_R(va_list args, buffer_t *output); */
 
 /* HELPERS FUNCTION */
