@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 				format += 2;
 				continue;
 			}
-			else if (*(format + i + 1) == '\0')
+			if (*(format + i + 1) == '\0')
 			{
 				len--;
 				break;

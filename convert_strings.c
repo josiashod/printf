@@ -105,7 +105,7 @@ unsigned int convert_S(va_list args, buffer_t *output)
 	if (str == NULL || !str)
 		return (_memcpy(output, null, 6));
 
-	while (str[i])
+	while (*(str + i) != '\0')
 	{
 		if (str[i] < 32 || str[i] >= 127)
 		{
@@ -114,6 +114,7 @@ unsigned int convert_S(va_list args, buffer_t *output)
 				len += _memcpy(output, "0", 1);
 			len += convert_ubase(str[i], 16, "0123456789ABCDEF", output);
 			i++;
+			continue;
 		}
 		len += _memcpy(output, str + i, 1);
 		i++;
