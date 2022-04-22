@@ -107,8 +107,11 @@ unsigned int convert_S(va_list args, buffer_t *output)
 
 	while (str[i])
 	{
-		if ((str[i] < 0 && str[i] < 32) || str[i] >= 127)
-			convert_base(str[i], 16, "0123456789ABCDEF", output);
+		if (str[i] < 32 || str[i] >= 127)
+		{
+			len += _memcpy(output, "\\x0", 3);
+			convert_ubase(str[i], 16, "0123456789ABCDEF", output);
+		}
 		len += _memcpy(output, str + i, 1);
 		i++;
 	}
