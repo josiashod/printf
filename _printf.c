@@ -26,8 +26,7 @@ int start(const char *format, va_list args, buffer_t *output)
 	int i, wid, prec, ret = 0;
 	char tmp;
 	unsigned char flags, len;
-	unsigned int (*f)(va_list, buffer_t *,
-			unsigned char, int, int, unsigned char);
+	u_int (*f)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
 
 	for (i = 0; *(format + i); i++)
 	{
@@ -41,7 +40,7 @@ int start(const char *format, va_list args, buffer_t *output)
 					&tmp);
 			len = handle_length(format + i + tmp + 1, &tmp);
 
-			f = handle_specifiers(format + i + tmp + 1);
+			f = hs(format + i + tmp + 1);
 			if (f != NULL)
 			{
 				i += tmp + 1;

@@ -2,6 +2,20 @@
 
 
 /**
+ * long_short - long_short
+ * @args: zero flag
+ * @len: unsigned char
+ * Return: long int
+ */
+long int long_short(va_list args, unsigned char len)
+{
+	if (len == LONG)
+		return (va_arg(args, long int));
+	else
+		return (va_arg(args, int));
+}
+
+/**
  * convert_d - Converts an argument to a signed int and
  *              stores it to a buffer contained in a struct.
  * @args: A va_list pointing to the argument to be converted.
@@ -16,16 +30,11 @@
 unsigned int convert_d(va_list args, buffer_t *output,
 		unsigned char flags, int wid, int prec, unsigned char len)
 {
-	long int d, copy;
+	long int d = 0, copy;
 	unsigned int ret = 0, count = 0;
 	char pad, space = ' ', neg = '-', plus = '+';
 
-	if (len == LONG)
-		d = va_arg(args, long int);
-	else
-		d = va_arg(args, int);
-	if (len == SHORT)
-		d = (short)d;
+	d = long_short(args, len);
 
 	/* Handle space flag */
 	if (SPACE_FLAG == 1 && d >= 0)
@@ -128,40 +137,6 @@ unsigned int convert_o(va_list args, buffer_t *output,
 
 	if (!(num == 0 && prec == 0))
 		ret += convert_unsigned_in_base(output, num, "01234567",
-				flags, wid, prec);
-
-	ret += print_neg_width(output, ret, flags, wid);
-
-	return (ret);
-}
-
-/**
- * convert_u - Converts an unsigned int argument to decimal and
- *               stores it to a buffer contained in a struct.
- * @args: A va_list pointing to the argument to be converted.
- * @flags: Flag modifiers.
- * @wid: A width modifier.
- * @prec: A precision modifier.
- * @len: A length modifier.
- * @output: A buffer_t struct containing a character array.
- *
- * Return: The number of bytes stored to the buffer.
- */
-unsigned int convert_u(va_list args, buffer_t *output,
-		unsigned char flags, int wid, int prec, unsigned char len)
-{
-	unsigned long int num;
-	unsigned int ret = 0;
-
-	if (len == LONG)
-		num = va_arg(args, unsigned long int);
-	else
-		num = va_arg(args, unsigned int);
-	if (len == SHORT)
-		num = (unsigned short)num;
-
-	if (!(num == 0 && prec == 0))
-		ret += convert_unsigned_in_base(output, num, "0123456789",
 				flags, wid, prec);
 
 	ret += print_neg_width(output, ret, flags, wid);

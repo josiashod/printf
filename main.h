@@ -22,6 +22,11 @@
 #define SHORT 1
 #define LONG 2
 
+/* add typedef to allow betty style */
+typedef unsigned int u_int;
+typedef unsigned char u_char;
+typedef const char c_char;
+
 /**
  * struct buffer_s - A new type defining a buffer struct.
  * @buffer: A pointer to a character array.
@@ -43,8 +48,7 @@ typedef struct buffer_s
 typedef struct converter_s
 {
 	unsigned char specifier;
-	unsigned int (*func)(va_list, buffer_t *,
-			unsigned char, int, int, unsigned char);
+	u_int (*func)(va_list, buffer_t *, unsigned char, int, int, unsigned char);
 } converter_t;
 
 /**
@@ -109,8 +113,7 @@ int handle_width(va_list args, const char *modifier, char *index);
 
 int handle_precision(va_list args, const char *modifier, char *index);
 
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
-		unsigned char, int, int, unsigned char);
+u_int (*hs(c_char * specifier))(va_list, buffer_t *, u_char, int, int, u_char);
 
 /* Modifiers */
 unsigned int print_width(buffer_t *output, unsigned int printed,
