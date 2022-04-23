@@ -47,7 +47,7 @@ int start(const char *format, va_list args, buffer_t *output)
 				ret += f(args, output, flags, wid, prec, len);
 				continue;
 			}
-			if (*(format + i + 1) == '\0')
+			else if (*(format + i + tmp + 1) == '\0')
 			{
 				ret = -1;
 				break;
